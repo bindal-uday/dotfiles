@@ -34,27 +34,23 @@ let
 in
 
 {
-  programs.zsh = {
+  programs.fish = {
     enable = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    enableCompletion = true;
     shellAliases = shAliases;
-
-    history.size = 10000;
-
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "sudo" ];
-      theme = "af-magic";
-      # agnoster , af-magic , arrow , bira , refined are some good themes
-    };
   };
 
   programs.bash = {
     enable = true;
     enableCompletion = true;
     shellAliases = shAliases;
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = true;
+      line_break.disabled = true;
+    };
   };
 
   home.packages = with pkgs; [
@@ -66,7 +62,7 @@ in
 
   programs.direnv = { 
     enable = true;
-    enableZshIntegration = true;
+    # enableFishIntegration = true;
     nix-direnv.enable = true;
   };
 
