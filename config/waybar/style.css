@@ -1,0 +1,210 @@
+/* Import color theme */
+@import "themes/mocha.css";
+
+* {
+  /*all: initial; Ignore gtk theme*/
+  border: none;
+  border-radius: 2px;
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: "Liberation Sans", "Roboto", "Helvetica", "Arial", "sans-serif";
+  font-size: 14px;
+  min-height: 0;
+  /* reference the color by using @color-name */
+  /* color: @text; */
+}
+
+/* Tooltip --------------------------------------------- */
+tooltip {
+  background-color: @mantle;
+  color: @crust;
+  border-radius: 9px;
+  border-width: 0px;
+  opacity: 0.95;
+  box-shadow: 1px 1px 1px 1px @surface0;
+}
+
+/* ----------------------------------------------------- */
+
+/* window module --------------------------------------- */
+window#waybar {
+  background-color: @base;
+  border-radius: 9px;
+  color: @base;
+  transition-property: background-color;
+  transition-duration: 0.4s;
+  opacity: 1;
+}
+
+window#waybar.empty #window {
+  background: transparent;
+}
+/* ----------------------------------------------------- */
+
+/* workspaces module ------------------------------------ */
+#workspaces button {
+  color: @text;
+  padding: 2px 2px 2px 2px;
+  margin: 2px;
+  min-width: 10px;
+  border-radius: 4px;
+}
+
+#workspaces button:hover {
+  background-color: @surface2;
+  color: @sky;
+}
+
+#workspaces button.active {
+  color: @sapphire;
+  background-color: @base;
+  border-bottom: 2px groove @sapphire;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+#workspaces button.urgent {
+  background-color: @surface0;
+  color: @red;
+  border-bottom: 2px solid @red;
+  border-radius: 2px;
+}
+
+#workspaces button.hidden {
+  background-color: @base;
+  color: @flamingo;
+}
+/* ----------------------------------------------------- */
+
+/* App Taskbar ----------------------------------------- */
+#taskbar button {
+  box-shadow: none;
+  text-shadow: none;
+  border-radius: 9px;
+  margin: 2px;
+  padding: 2px 3px 2px 3px;
+  animation: tb_normal 20s ease-in-out 0.5;
+}
+
+#taskbar button.active {
+  background: @surface0;
+  margin: 2px;
+  padding: 2px 8px 2px 8px;
+  border-bottom: 2px ridge @sapphire;
+  border-radius: 3px;
+  animation: tb_active 20s ease-in-out 0.5;
+  transition: all 0.4s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+#taskbar button:hover {
+  background: @overlay2;
+  animation: tb_hover 20s ease-in-out 0.5;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+taskbar#waybar.empty {
+  background: transparent;
+}
+/* ----------------------------------------------------- */
+
+/* tray ------------------------------------------------ */
+#tray menu * {
+  min-height: 16px;
+}
+
+#tray menu separator {
+  min-height: 10px;
+}
+/* ----------------------------------------------------- */
+
+/* tags button ----------------------------------------- */
+#tags button {
+  background-color: @base;
+  padding: 3px;
+  border-radius: 10px;
+  min-width: 20px;
+  color: @flamingo;
+}
+
+#tags button.occupied {
+  background-color: @mantle;
+  color: @crust;
+  padding: 3px;
+  border-radius: 10px;
+  min-width: 20px;
+}
+
+#tags button.focused {
+  background-color: @flamingo;
+  border-bottom: 2px solid @mauve;
+  color: @colfg;
+}
+
+#tags button.urgent {
+  background-color: @colred;
+  color: @colfg;
+}
+/* ----------------------------------------------------- */
+
+/* Common CSS ------------------------------------------ */
+#window,
+#workspaces,
+#taskbar,
+#custom-nix,
+#battery,
+#mpris,
+#clock,
+#cpu,
+#temperature.cpu,
+#memory,
+#network,
+#pulseaudio,
+#tray {
+  background: @crust;
+  padding: 0 10px;
+  margin: 4px 2px 4px 2px;
+  border-radius: 90px;
+  background-clip: padding-box;
+}
+/* ----------------------------------------------------- */
+
+/* Modules Coloring ------------------------------------ */
+#custom-nix {
+  color: @teal;
+}
+
+#battery {
+  color: @green;
+}
+
+#clock {
+  color: @teal;
+}
+
+#mpris {
+  color: @lavender;
+}
+
+#cpu {
+  color: @sapphire;
+}
+
+#temperature.cpu {
+  color: @red;
+}
+
+#memory {
+  color: @mauve;
+}
+
+#network {
+  color: @rosewater;
+}
+
+#pulseaudio {
+  color: @yellow;
+}
+
+#window {
+  color: @rosewater;
+}
+/* ----------------------------------------------------- */
