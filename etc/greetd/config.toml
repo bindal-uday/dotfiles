@@ -14,7 +14,10 @@ command = "tuigreet -t -s /usr/share/xsessions:/usr/share/wayland-sessions"
 # Initial session
 [initial_session]
 user = "greeter"
+command = "tuigreet -t -s /usr/share/xsessions:/usr/share/wayland-sessions"
 
 # The default session, also known as the greeter.
+
 [default_session]
 user = "greeter"
+command = "tuigreet -t -s /usr/share/xsessions:/usr/share/wayland-sessions"
