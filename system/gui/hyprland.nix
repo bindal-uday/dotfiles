@@ -10,7 +10,11 @@
 
   # security
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.login.enableGnomeKeyring = true;
+  security = {
+    pam.services.login.enableGnomeKeyring = true;
+    polkit.enable = true;
+    # polkit.package = pkgs.hyprpolkitagent;
+  };
 
   # Hint Electon apps to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -56,6 +60,8 @@
     hyprcursor                         # cursor
 
     # Dependencies ----------------------------------------------------- #
+    wlr-randr                          # randr for wlroots compositors
+    hyprpolkitagent                    # polkit agent in qt/qml
     polkit_gnome                       # authentication agent
     gnome-keyring                      # store pass, keys, etc
     xdg-desktop-portal-hyprland        # xdg desktop portal for hyprland
@@ -64,7 +70,6 @@
     jq                                 # for json processing
     imagemagick                        # for image processing
     libnotify                          # for notifications
-    notify-desktop                     # for sending desktop notifications
 
     # Theming ---------------------------------------------------------- #
     nwg-look                           # gtk configuration tool
@@ -75,6 +80,9 @@
     libsForQt5.qt5.qtwayland           # wayland support in qt5
     kdePackages.qtwayland              # wayland support in qt6
     adw-gtk3                           # adwaita gtk3 theme
+    catppuccin-papirus-folders         # folder theme
+    papirus-icon-theme                 # icon theme
+    papirus-folders                    # tool to switch papirus colors
 
   ]) ++ (with pkgs-stable; [
 

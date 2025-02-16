@@ -29,6 +29,9 @@
     # ----- USER Configuration ----- #
     userConfig = {
 
+      # Shell
+      shell = "fish";
+
       # users
       username = "levi"; # username
       name = "Levi Ackerman"; # name/identifier
@@ -80,6 +83,7 @@
         # define nix modules
         ./system/configuration.nix # Your system configuration.
         chaotic.nixosModules.default # chaotic default module
+        inputs.programs-db.nixosModules.programs-sqlite
         {
           nixpkgs.overlays = [
             # example.overlay
@@ -98,6 +102,7 @@
           inherit inputs;
         };
         modules = systemModules ++ [
+          ./system/modules/zen-browser.nix
           # ./system/hardware/hardware-configuration.nix # other nix modules
         ];
       };
@@ -143,9 +148,16 @@
     hyprland.url = "github:hyprwm/Hyprland";
 
     # private-stuff = {
-        # url = "path:/home/itz_levi_404/dotfiles/.private";
+        # url = "path:/home/levi/dotfiles/.private";
         # flake = false;
     # };
+
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    programs-db = {
+      url = "github:wamserma/flake-programs-sqlite";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 

@@ -20,6 +20,7 @@ let
     ".5" = "cd ../../../../..";
 
     # others
+    ff= "fastfetch";
     info = "fastfetch";
     fetch = "fastfetch";
     neofetch = "fastfetch";

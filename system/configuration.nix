@@ -16,7 +16,6 @@
       ./hardware/bluetooth.nix
       ./hardware/bootloader.nix
       ./hardware/kernel.nix
-      ./hardware/services.nix
       ./hardware/sound.nix
       ./hardware/graphic.nix
       ./hardware/time.nix
@@ -26,13 +25,15 @@
       ./modules/nix-settings.nix
       ./modules/internationalisation.nix
       ./modules/users.nix
+      ./modules/services.nix
       ./modules/packages.nix
+      ./modules/virtual.nix
 
       # GUI nix modules
       ./gui/fonts.nix
       ./gui/services.nix
       ./gui/hyprland.nix
-      ./gui/plasma.nix
+      ./gui/gnome.nix
     ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
