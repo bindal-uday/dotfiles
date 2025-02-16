@@ -89,9 +89,7 @@ in
     mpv                                # media player
     imv                                # image viewer
     firefox                            # browser
-    librewolf                          # browser2
     qutebrowser                        # minimal browser
-    ungoogled-chromium                 # ungoogled oss-chromium
     motrix                             # Download manager
     stremio                            # binge
     ani-cli                            # anime cli

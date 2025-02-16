@@ -28,6 +28,11 @@
   
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Packages
   environment.systemPackages = with pkgs; [
@@ -35,11 +40,22 @@
     libinput
     libinput-gestures
   ];
-    
-  systemd.services.dev-tpmrm0 = {
-    enable = false;
-    wantedBy = [ ];
-    after = [ ];
+
+  # TPM
+  boot.initrd.systemd.tpm2.enable = false;
+  systemd = {
+    tpm2.enable = false;
+    services = {
+      "tpm2.tagret" = {
+        enable = false;
+      };
+      "dev-tpm0.device" = {
+        enable = false;
+      };
+      "dev-tpmrm0.device" = {
+        enable = false;
+      };
+    };
   };
 
 }

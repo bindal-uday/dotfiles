@@ -32,11 +32,11 @@
       shell = "fish";
 
       # users
-      username = "levi";
-      name = "Levi Ackerman";
+      username = "error";
+      name = "ERROR";
 
-      username2 = "error"; 
-      name2 = "ERROR 404";
+      username2 = "levi";
+      name2 = "Levi";
 
       dotfilesDir = "~/dotfiles";
       dotfilesDirName = "dotfiles";
