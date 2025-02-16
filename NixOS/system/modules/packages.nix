@@ -1,8 +1,20 @@
-{ config, lib, pkgs, pkgs-stable, ... }:
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  pkgs-stable,
+  systemConfig,
+  ...
+}:
 
+let
+  system = systemConfig.system;
+  zen-browser = inputs.zen-browser.packages."${system}".twilight;
+in
 {
 
-  # user pkgs
+  # programs
   programs = {
     adb.enable = true;
   };
@@ -20,7 +32,7 @@
     htop
     btop
     usbtop
-    neofetch
+    nh
     nix-index
     nix-prefetch-git
     zip
@@ -28,20 +40,17 @@
     unrar 
     fzf
     android-tools
+    adbtuifm
 
     # Shell ------------------------------------------------------------ #
     git                                # version control
     gh                                 # github cli
     glab                               # gitlab cli
-    zsh                                # the z shell
     eza                                # file lister for zsh
-    oh-my-zsh                          # plugin manager for zsh
-    zsh-powerlevel10k                  # theme for zsh
     lsd                                # file lister for fish
     starship                           # customizable shell prompt
     fastfetch                          # system information fetch tool
     imagemagick                        # for custom fetch logo
-    krabby                             # display pokemon sprites
     cava                               # cli audio visualizer
     yt-dlp                             # cli utility for yt
     openssh                            # SSH protocol
@@ -49,24 +58,13 @@
     tmux                               # terminal multiplexer
 
     # System stuff ----------------------------------------------------- #
-    networkmanager                     # network manager
-    networkmanagerapplet               # nm-applet
-
-    libinput                           # input devices in Wayland compositors
-    libinput-gestures                  # Gesture mapper for libinput
-
-    brightnessctl                      # screen brightness control
-    udisks                             # disk utility
-    udiskie                            # manage removable media
-    gvfs                               # virtual filesystem
-    gnome.gvfs                         # virtual filesystem (full gnome)
     gparted                            # partition manager
-
     usbutils                           # tools for usb
     pciutils                           # tools for pci
 
     # GPU & power stuff -------------------------------------------------------- #
     amdvlk                             # AMD OSS Driver For Vulkan
+    amdgpu_top                         # gpu usage
     thermald                           # thermal daemon
     tlp                                # advanced power management
 
@@ -80,19 +78,24 @@
     ranger                             # TUI file manager
     mpv                                # media player
     imv                                # image viewer
-    firefox-wayland                    # browser
+    firefox                            # browser
     librewolf                          # browser2
+    qutebrowser                        # minimal browser
+    ungoogled-chromium                 # ungoogled oss-chromium
     motrix                             # Download manager
     stremio                            # binge
     ani-cli                            # anime cli
-    vscodium                           # ide text editor
-    neovim                             # terminal text editor
+    vscodium                           # IDE
+    neovim                             # text editor
     neovide                            # GUI for neovim
     lazygit                            # TUI git tool
+    telegram-desktop                   # telegram
+    zen-browser                        # firefox fork
 
     # nvim dependencies ------------------------------------------------ #
     ripgrep                            # search with regex pattern
     nodePackages.nodejs                # framework for JS engine
+    nodePackages.npm                   # npm 
     python3                            # python3
     stylua                             # lua formatter for nvim
     lua-language-server                # lua lsp

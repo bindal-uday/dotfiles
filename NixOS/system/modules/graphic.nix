@@ -6,17 +6,26 @@
     enable = true;
     enable32Bit = true; # for wine like pkgs
     extraPackages = with pkgs; [
-      /* rocmPackages.clr */
-      vaapiVdpau
+      rocmPackages.clr
       libvdpau-va-gl
+      libva
+      libva-vdpau-driver
+      vaapiVdpau
       mesa
     ];
+    # for 32 Bit applications
     extraPackages32 = with pkgs; [
-      /* rocmPackages.clr */
+      rocmPackages.clr
       vaapiVdpau
+      libva-vdpau-driver
       libvdpau-va-gl
+      vaapiVdpau
       mesa
     ];
+  };
 
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "radeonsi";
+    VDPAU_DRIVER = "radeonsi";
   };
 }
