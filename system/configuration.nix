@@ -12,6 +12,7 @@
       ./hardware/hardware-configuration.nix
       
       # hardware related nix modules
+      ./hardware/zram.nix
       ./hardware/bluetooth.nix
       ./hardware/bootloader.nix
       ./hardware/kernel.nix

@@ -33,7 +33,7 @@
     # Window Manager --------------------------------------------------- #
     hyprland                           # wlroots-based wayland compositor
     xwayland                           # interface X11 apps with Wayland protocol
-    cinnamon.nemo-with-extensions      # file manager
+    nemo-with-extensions               # file manager
     dunst                              # notification daemon
     rofi-wayland                       # application launcher
     waybar                             # system bar

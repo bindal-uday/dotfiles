@@ -8,7 +8,7 @@
               chaotic,
               home-manager,
               home-manager-stable,
-              private-stuff,
+              # private-stuff,
               hyprland,
               ...
             }@inputs:
@@ -18,7 +18,7 @@
     # ---- SYSTEM Configuration ---- #
     systemConfig = {
       system = "x86_64-linux"; # system arch
-      hostname = "nix"; # hostname
+      hostname = "nixos"; # hostname
       timezone = "Asia/Kolkata"; # select timezone
       locale = "en_US.UTF-8"; # select locale
       bootMode = "uefi"; # uefi or bios
@@ -30,7 +30,7 @@
     userConfig = {
 
       # users
-      username = "itz_levi_404"; # username
+      username = "levi"; # username
       name = "Levi Ackerman"; # name/identifier
 
       username2 = "error"; 
@@ -114,7 +114,7 @@
         };
         modules = [
           ./user/home.nix
-          "${private-stuff}/userdata.nix" # pvt stuff
+          # "${private-stuff}/userdata.nix" # pvt stuff
           hyprland.homeManagerModules.default # hyprland hm module
         ];
       };
@@ -124,7 +124,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
@@ -135,17 +135,17 @@
     };
 
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       # home-manager follows nixpkgs-stable channel
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url = "github:hyprwm/Hyprland";
 
-    private-stuff = {
-        url = "path:/home/itz_levi_404/dotfiles/.private";
-        flake = false;
-    };
+    # private-stuff = {
+        # url = "path:/home/itz_levi_404/dotfiles/.private";
+        # flake = false;
+    # };
 
   };
 
