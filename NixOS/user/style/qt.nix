@@ -9,7 +9,7 @@
   qt.platformTheme.name = "gtk";
 
   # name of the qt theme
-  qt.style.name = "qt5ct";
+  qt.style.name = "qt6ct";
 
   # detected automatically:
   # adwaita, adwaita-dark, adwaita-highcontrast,

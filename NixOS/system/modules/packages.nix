@@ -10,13 +10,22 @@
 
 let
   system = systemConfig.system;
-  zen-browser = inputs.zen-browser.packages."${system}".twilight;
+  zen-browser = inputs.zen-browser.packages."${system}".default;
 in
 {
 
   # programs
   programs = {
     adb.enable = true;
+  };
+
+  # dynamic linked executables
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      # Add any missing dynamic libraries for unpackaged programs
+      # here, NOT in environment.systemPackages
+    ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -35,6 +44,7 @@ in
     nh
     nix-index
     nix-prefetch-git
+    cachix
     zip
     unzip
     unrar 
@@ -62,7 +72,7 @@ in
     usbutils                           # tools for usb
     pciutils                           # tools for pci
 
-    # GPU & power stuff -------------------------------------------------------- #
+    # GPU & power stuff ------------------------------------------------ #
     amdvlk                             # AMD OSS Driver For Vulkan
     amdgpu_top                         # gpu usage
     thermald                           # thermal daemon
@@ -92,11 +102,16 @@ in
     telegram-desktop                   # telegram
     zen-browser                        # firefox fork
 
-    # nvim dependencies ------------------------------------------------ #
+    # dependencies ----------------------------------------------------- #
     ripgrep                            # search with regex pattern
     nodePackages.nodejs                # framework for JS engine
     nodePackages.npm                   # npm 
     python3                            # python3
+    python3Packages.pip                # py pkgs
+    python3Packages.pandas             # pandas
+    python3Packages.openpyxl           # py excel library
+    python3Packages.pillow             # PIL fork
+    tree-sitter                        # syntax parser
     stylua                             # lua formatter for nvim
     lua-language-server                # lua lsp
     gcc                                # GNU compiler collection

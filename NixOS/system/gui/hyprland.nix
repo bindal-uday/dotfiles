@@ -1,5 +1,9 @@
 { inputs, lib, config, pkgs, pkgs-stable, ... }:
 
+let
+    hyprlandPkg = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPkg = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+in
 {
 
   # Enable hyprland and related stuff
@@ -8,8 +12,8 @@
     xwayland.enable = true;
 
     # Set the flake pkgs
-    # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    package = hyprlandPkg;
+    portalPackage = portalPkg;
   };
 
   # security
@@ -17,17 +21,6 @@
   security = {
     pam.services.login.enableGnomeKeyring = true;
     polkit.enable = true;
-    # polkit.package = pkgs.polkit_gnome;
-  };
-
-  # cross desktop grouping (sandbox apps)
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
-    ];
   };
 
   # environment vars
@@ -39,10 +32,9 @@
   };
 
   # QT theme
-  environment.variables.QT_QPA_PLATFORMTHEME = lib.mkForce "gnome";
+  environment.variables.QT_QPA_PLATFORMTHEME = lib.mkForce "qt6ct";
   
   # Some system packages
-  
   environment.systemPackages = (with pkgs; [
 
     # Window Manager --------------------------------------------------- #
@@ -52,10 +44,8 @@
     dunst                              # notification daemon
     grim                               # grab image tool
     grimblast                          # screenshot tool
-    gvfs                               # virtual fs 
     hyprcursor                         # cursor
     hypridle                           # idle utility
-    hyprland                           # wlroots-based wayland compositor
     hyprlock                           # lock utility
     hyprpaper                          # wallpaper daemon
     hyprpicker                         # color picker
@@ -70,21 +60,17 @@
     wl-clip-persist                    # clipboard-persist
     wl-clipboard                       # clipboard 
     wlogout                            # logout menu
-    xwayland                           # interface X11 apps with Wayland protocol
 
     # Dependencies ----------------------------------------------------- #
     gnome-keyring                      # store pass, keys, etc
-    hyprpolkitagent                    # polkit agent in qt/qml
     imagemagick                        # for image processing
     jq                                 # for json processing
     libnotify                          # for notifications
     parallel                           # for parallel processing
-    polkit_gnome                       # authentication agent
     wlr-randr                          # randr for wlroots compositors
-    xdg-desktop-portal-gtk             # xdg desktop portal for gtk
-    xdg-desktop-portal-hyprland        # xdg desktop portal for hyprland
 
     # Theming ---------------------------------------------------------- #
+    libadwaita                         # adwaita
     adw-gtk3                           # adwaita gtk3 theme
     adwaita-icon-theme                 # icon theme
     kdePackages.qt6ct                  # qt6 configuration tool

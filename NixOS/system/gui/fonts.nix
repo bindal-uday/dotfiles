@@ -8,11 +8,8 @@
     geist-font
     fantasque-sans-mono
     nerd-fonts.fira-code
-    nerd-font-patcher
-    noto-fonts
-    noto-fonts-emoji
-    twemoji-color-font
-    powerline-fonts
-    powerline-symbols
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.meslo-lg
+    nerd-fonts.geist-mono
   ];
 }
