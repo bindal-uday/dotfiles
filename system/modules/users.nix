@@ -13,16 +13,6 @@
     ];
   };
 
-  users.users.${userConfig.username2} = {
-    isNormalUser = true;
-    description = userConfig.name2;
-    useDefaultShell = true;
-    extraGroups = [ "wheel" "networkmanager" "input"  "video" "audio" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      brave # browser
-    ];
-  };
-
   # fish
   users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
