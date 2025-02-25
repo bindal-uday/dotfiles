@@ -7,7 +7,7 @@
     jetbrains-mono
     geist-font
     fantasque-sans-mono
-    fira-code-nerdfont
+    nerd-fonts.fira-code
     nerd-font-patcher
     noto-fonts
     noto-fonts-emoji

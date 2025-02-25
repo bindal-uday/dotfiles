@@ -32,7 +32,7 @@
       ./gui/fonts.nix
       ./gui/services.nix
       ./gui/hyprland.nix
-      ./gui/plasma.nix
+      ./gui/gnome.nix
     ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,

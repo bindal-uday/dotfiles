@@ -2,6 +2,12 @@
 
 {
 
+  systemd.services.tpm-rm0 = {
+    enable = false;
+    wantedBy = [ ];
+    after = [ ];
+  };
+
   # Enable display manager
   services.greetd = {
     enable = true;
@@ -20,6 +26,11 @@
   services.dbus = {
     enable = true;
     packages = [ pkgs.dconf ];
+  };
+
+  services.gvfs = {
+    enable = true;
+    package = pkgs.gvfs;
   };
 
   # systemPackages
