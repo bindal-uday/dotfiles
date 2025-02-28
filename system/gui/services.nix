@@ -2,12 +2,6 @@
 
 {
 
-  systemd.services.tpm-rm0 = {
-    enable = false;
-    wantedBy = [ ];
-    after = [ ];
-  };
-
   # Enable display manager
   services.greetd = {
     enable = true;

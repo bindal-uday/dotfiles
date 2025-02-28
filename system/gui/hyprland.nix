@@ -80,6 +80,9 @@
     libsForQt5.qt5.qtwayland           # wayland support in qt5
     kdePackages.qtwayland              # wayland support in qt6
     adw-gtk3                           # adwaita gtk3 theme
+    catppuccin-papirus-folders         # folder theme
+    papirus-icon-theme                 # icon theme
+    papirus-folders                    # tool to switch papirus colors
 
   ]) ++ (with pkgs-stable; [
 

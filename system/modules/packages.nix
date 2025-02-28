@@ -2,6 +2,11 @@
 
 {
 
+  # user pkgs
+  programs = {
+    adb.enable = true;
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   ## TWO VERSIONS OF SAME PACKAGE (BINARY) DOESN'T WORK!!
@@ -66,7 +71,7 @@
     tlp                                # advanced power management
 
     # Applications ----------------------------------------------------- #
-    home-manager                       # /home dir config manager
+    home-manager                       # "~/.config" manager
     onlyoffice-bin                     # office
     obs-studio                         # screen rec
     alacritty                          # terminal

@@ -16,7 +16,6 @@
       ./hardware/bluetooth.nix
       ./hardware/bootloader.nix
       ./hardware/kernel.nix
-      ./hardware/services.nix
       ./hardware/sound.nix
       ./hardware/graphic.nix
       ./hardware/time.nix
@@ -26,7 +25,9 @@
       ./modules/nix-settings.nix
       ./modules/internationalisation.nix
       ./modules/users.nix
+      ./modules/services.nix
       ./modules/packages.nix
+      ./modules/virtual.nix
 
       # GUI nix modules
       ./gui/fonts.nix
