@@ -1,0 +1,54 @@
+{ config, lib, pkgs, ... }:
+
+{
+  # Desktop 
+  services = {
+    xserver.desktopManager.gnome.enable = true;
+  };
+
+  # Programs
+  programs = {
+    kdeconnect = {
+      enable = true;
+      package = pkgs.gnomeExtensions.gsconnect;
+    };
+  };
+
+  # system Packages
+  environment.systemPackages = with pkgs; [
+    # list of pkgs
+    gnomeExtensions.gsconnect
+  ];
+
+  # exclusions
+  environment.gnome.excludePackages = with pkgs; [
+
+    baobab # disk analyzer
+    cheese # camera              
+    endeavour # task manager
+    epiphany # webkit browser
+    evince # docx viewer
+    geary # mail
+    ghex # hex editor
+    gnome-calculator # calc
+    gnome-calendar # calendar
+    gnome-characters # char utility
+    gnome-clocks # clock
+    gnome-connections # remote desktop client
+    gnome-console # term
+    gnome-contacts # contacts
+    gnome-disk-utility # disks
+    gnome-font-viewer # fonts
+    gnome-logs # log viewer
+    gnome-maps # maps
+    gnome-music # music player
+    gnome-system-monitor # task manager
+    gnome-text-editor  # text editor
+    gnome-weather # weather
+    papers # docx viewer
+    rygel # uPnP media server
+    simple-scan # scanner
+    totem # movie player
+
+  ];
+}

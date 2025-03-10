@@ -9,9 +9,9 @@ in
     isNormalUser = true;
     description = userConfig.name;
     useDefaultShell = true;
-    extraGroups = [ "wheel" "networkmanager" "input"  "video" "audio" "adbusers" "docker" ];
+    # shell = pkgs.${shellName};
+    extraGroups = [ "wheel" "networkmanager" "input"  "video" "audio" "adbusers" "docker" "podman" ];
     packages = with pkgs; [
-      tdesktop
     ];
   };
 
@@ -28,11 +28,4 @@ in
   programs.${shellName}.enable = true;
   users.defaultUserShell = pkgs.${shellName};
 
-  # Change runtime directory size
-  services.logind.extraConfig = "RuntimeDirectorySize=8G";
-
-  # user pkgs
-  programs = {
-    adb.enable = true;
-  };
 }

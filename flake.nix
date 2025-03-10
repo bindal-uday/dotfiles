@@ -7,9 +7,8 @@
               nixpkgs-stable,
               chaotic,
               home-manager,
-              home-manager-stable,
-              # private-stuff,
               hyprland,
+              programs-db,
               ...
             }@inputs:
   
@@ -17,31 +16,30 @@
 
     # ---- SYSTEM Configuration ---- #
     systemConfig = {
-      system = "x86_64-linux"; # system arch
-      hostname = "nixos"; # hostname
-      timezone = "Asia/Kolkata"; # select timezone
-      locale = "en_US.UTF-8"; # select locale
+      system = "x86_64-linux";
+      hostname = "nixos";
+      timezone = "Asia/Kolkata";
+      locale = "en_US.UTF-8";
       bootMode = "uefi"; # uefi or bios
-      bootMountPath = "/boot"; # mount path for efi boot partition; only used for uefi boot mode
+      bootMountPath = "/boot";
       grubDevice = ""; # device identifier for grub; only used for legacy (bios) boot mode
     };
 
     # ----- USER Configuration ----- #
     userConfig = {
-
       # Shell
       shell = "fish";
 
       # users
-      username = "levi"; # username
-      name = "Levi Ackerman"; # name/identifier
+      username = "levi";
+      name = "Levi Ackerman";
 
       username2 = "error"; 
-      name2 = "iTZ_ERROR_404";
+      name2 = "ERROR 404";
 
-      dotfilesDir = "~/dotfiles"; # absolute path of the local repo
-      dotfilesDirName = "dotfiles"; # name for dotfiles dir
-      
+      dotfilesDir = "~/dotfiles";
+      dotfilesDirName = "dotfiles";
+
       themeConfig = {
         cursorPkg = pkgs.bibata-cursors;
         cursor = "Bibata-Modern-Ice";
@@ -79,11 +77,11 @@
     nixosConfigurations =
 
     let
+
       systemModules = [
         # define nix modules
-        ./system/configuration.nix # Your system configuration.
-        chaotic.nixosModules.default # chaotic default module
-        inputs.programs-db.nixosModules.programs-sqlite
+        ./NixOS/system/configuration.nix
+        chaotic.nixosModules.default
         {
           nixpkgs.overlays = [
             # example.overlay
@@ -91,40 +89,45 @@
           ];
         }
       ];
+
+      specialArgs = {
+        inherit pkgs-stable;
+        inherit systemConfig;
+        inherit userConfig;
+        inherit inputs;
+      };
+
     in
     {
       ${systemConfig.hostname} = lib.nixosSystem {
         inherit system;
-        specialArgs = {
-          inherit pkgs-stable;
-          inherit systemConfig;
-          inherit userConfig;
-          inherit inputs;
-        };
+        specialArgs = specialArgs;
         modules = systemModules ++ [
-          ./system/modules/zen-browser.nix
-          # ./system/hardware/hardware-configuration.nix # other nix modules
+          ./NixOS/system/hardware-configuration.nix
         ];
       };
     };
 
-    homeConfigurations = {
+    homeConfigurations =
+    let
+      userModules = [
+        # user nix modules
+        ./NixOS/user/home.nix
+      ];
+      extraSpecialArgs = {
+        inherit pkgs-stable;
+        inherit systemConfig;
+        inherit userConfig;
+        inherit inputs;
+      };
+    in
+    {
       ${userConfig.username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = {
-          inherit pkgs-stable;
-          inherit systemConfig;
-          inherit userConfig;
-          inherit inputs;
-        };
-        modules = [
-          ./user/home.nix
-          # "${private-stuff}/userdata.nix" # pvt stuff
-          hyprland.homeManagerModules.default # hyprland hm module
-        ];
+        extraSpecialArgs = extraSpecialArgs;
+        modules = userModules;
       };
     };
-
   };
 
   inputs = {
@@ -139,18 +142,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-manager-stable = {
-      url = "github:nix-community/home-manager/release-24.11";
-      # home-manager follows nixpkgs-stable channel
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-
     hyprland.url = "github:hyprwm/Hyprland";
-
-    # private-stuff = {
-        # url = "path:/home/levi/dotfiles/.private";
-        # flake = false;
-    # };
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
