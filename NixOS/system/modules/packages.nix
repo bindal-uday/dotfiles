@@ -35,6 +35,7 @@ in
     nh
     nix-index
     nix-prefetch-git
+    cachix
     zip
     unzip
     unrar 
@@ -62,7 +63,7 @@ in
     usbutils                           # tools for usb
     pciutils                           # tools for pci
 
-    # GPU & power stuff -------------------------------------------------------- #
+    # GPU & power stuff ------------------------------------------------ #
     amdvlk                             # AMD OSS Driver For Vulkan
     amdgpu_top                         # gpu usage
     thermald                           # thermal daemon
@@ -77,6 +78,7 @@ in
     foot                               # term3
     ranger                             # TUI file manager
     mpv                                # media player
+    # play-with-mpv                      # py server for mpv
     imv                                # image viewer
     firefox                            # browser
     librewolf                          # browser2
@@ -92,11 +94,15 @@ in
     telegram-desktop                   # telegram
     zen-browser                        # firefox fork
 
-    # nvim dependencies ------------------------------------------------ #
+    # dependencies ----------------------------------------------------- #
     ripgrep                            # search with regex pattern
     nodePackages.nodejs                # framework for JS engine
     nodePackages.npm                   # npm 
-    python3                            # python3
+    python313                          # python3
+    python313Packages.pip              # py pkgs
+    python313Packages.pandas           # pandas
+    python313Packages.openpyxl         # py excel library
+    python313Packages.pillow           # PIL fork
     stylua                             # lua formatter for nvim
     lua-language-server                # lua lsp
     gcc                                # GNU compiler collection

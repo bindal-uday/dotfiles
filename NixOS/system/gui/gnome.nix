@@ -18,6 +18,7 @@
   environment.systemPackages = with pkgs; [
     # list of pkgs
     gnomeExtensions.gsconnect
+    gnome-font-viewer
   ];
 
   # exclusions
@@ -38,7 +39,6 @@
     gnome-console # term
     gnome-contacts # contacts
     gnome-disk-utility # disks
-    gnome-font-viewer # fonts
     gnome-logs # log viewer
     gnome-maps # maps
     gnome-music # music player

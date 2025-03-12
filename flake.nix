@@ -9,6 +9,7 @@
               home-manager,
               hyprland,
               programs-db,
+              cachix,
               ...
             }@inputs:
   
@@ -136,6 +137,8 @@
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
+    cachix.url = "github:cachix/cachix";
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       # home-manager follows nixpkgs channel
@@ -151,6 +154,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+  };
+
+  nixConfig = {
+    substituters = [
+      "https://cache.nixos.org/"
+      "https://hyprland.cachix.org"
+    ];
+
+    trusted-public-keys = [
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    ];
+
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
 
 }
