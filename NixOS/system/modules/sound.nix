@@ -15,9 +15,7 @@
 
   environment.systemPackages = with pkgs; [
     pa-notify                          # vol notify
-    pw-viz                             # graph editor
     easyeffects                        # audio effects
-    jamesdsp                           # audio effects
     pamixer                            # pulseaudio cli mixer
     pipewire                           # audio/video server
     pwvucontrol                        # Pipewire volume control

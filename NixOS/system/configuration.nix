@@ -14,7 +14,7 @@
     ./modules/graphic.nix
     ./modules/packages.nix
     ./modules/services.nix
-    ./modules/nix-settings.nix
+    ./modules/nix-config.nix
     ./modules/virtual.nix
 
     # GUI nix modules

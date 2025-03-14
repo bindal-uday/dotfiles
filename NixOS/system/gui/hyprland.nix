@@ -1,5 +1,10 @@
 { inputs, lib, config, pkgs, pkgs-stable, ... }:
 
+let
+    hyprlandPkg = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPkg = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+in
+
 {
 
   # Enable hyprland and related stuff
@@ -8,8 +13,8 @@
     xwayland.enable = true;
 
     # Set the flake pkgs
-    # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    # package = hyprlandPkg;
+    # portalPackage = portalPkg;
   };
 
   # security
@@ -85,6 +90,7 @@
     xdg-desktop-portal-hyprland        # xdg desktop portal for hyprland
 
     # Theming ---------------------------------------------------------- #
+    libadwaita                         # adwaita
     adw-gtk3                           # adwaita gtk3 theme
     adwaita-icon-theme                 # icon theme
     kdePackages.qt6ct                  # qt6 configuration tool

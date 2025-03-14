@@ -10,14 +10,13 @@
   programs = {
     kdeconnect = {
       enable = true;
-      package = pkgs.gnomeExtensions.gsconnect;
     };
   };
 
   # system Packages
   environment.systemPackages = with pkgs; [
     # list of pkgs
-    gnomeExtensions.gsconnect
+    kdePackages.kdeconnect-kde
     gnome-font-viewer
   ];
 

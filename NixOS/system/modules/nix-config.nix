@@ -5,21 +5,26 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # nix-settings
   nix = {
-     extraOptions = ''
+    optimise.automatic = true;
+    extraOptions = ''
       experimental-features = nix-command flakes auto-allocate-uids
       max-substitution-jobs = 64
       http-connections = 64
       auto-allocate-uids = true
+      auto-optimise-store = true
     '';
   
-    # Optimize storage
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      auto-optimise-store = true;
       trusted-users = [ "root" "levi" "@wheel" ];
+      substituters = [
+        "https://hyprland.cachix.org"
+      ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
     };
-    optimise.automatic = true;
 
     # auto scheduled GC running
     gc = {

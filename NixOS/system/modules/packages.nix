@@ -19,6 +19,15 @@ in
     adb.enable = true;
   };
 
+  # dynamic linked executables
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      # Add any missing dynamic libraries for unpackaged programs
+      # here, NOT in environment.systemPackages
+    ];
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   ## TWO VERSIONS OF SAME PACKAGE (BINARY) DOESN'T WORK!!
@@ -103,6 +112,7 @@ in
     python313Packages.pandas           # pandas
     python313Packages.openpyxl         # py excel library
     python313Packages.pillow           # PIL fork
+    tree-sitter                        # parser
     stylua                             # lua formatter for nvim
     lua-language-server                # lua lsp
     gcc                                # GNU compiler collection
