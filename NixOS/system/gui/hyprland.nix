@@ -13,8 +13,8 @@ in
     xwayland.enable = true;
 
     # Set the flake pkgs
-    # package = hyprlandPkg;
-    # portalPackage = portalPkg;
+    package = hyprlandPkg;
+    portalPackage = portalPkg;
   };
 
   # security
