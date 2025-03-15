@@ -10,7 +10,7 @@
 
 let
   system = systemConfig.system;
-  zen-browser = inputs.zen-browser.packages."${system}".twilight;
+  zen-browser = inputs.zen-browser.packages."${system}".default;
 in
 {
 
@@ -87,7 +87,7 @@ in
     foot                               # term3
     ranger                             # TUI file manager
     mpv                                # media player
-    # play-with-mpv                      # py server for mpv
+    # play-with-mpv                    # py server for mpv
     imv                                # image viewer
     firefox                            # browser
     librewolf                          # browser2
@@ -112,7 +112,7 @@ in
     python313Packages.pandas           # pandas
     python313Packages.openpyxl         # py excel library
     python313Packages.pillow           # PIL fork
-    tree-sitter                        # parser
+    tree-sitter                        # syntax parser
     stylua                             # lua formatter for nvim
     lua-language-server                # lua lsp
     gcc                                # GNU compiler collection
