@@ -87,7 +87,6 @@ in
     foot                               # term3
     ranger                             # TUI file manager
     mpv                                # media player
-    # play-with-mpv                    # py server for mpv
     imv                                # image viewer
     firefox                            # browser
     librewolf                          # browser2
@@ -107,11 +106,11 @@ in
     ripgrep                            # search with regex pattern
     nodePackages.nodejs                # framework for JS engine
     nodePackages.npm                   # npm 
-    python313                          # python3
-    python313Packages.pip              # py pkgs
-    python313Packages.pandas           # pandas
-    python313Packages.openpyxl         # py excel library
-    python313Packages.pillow           # PIL fork
+    python3                            # python3
+    python3Packages.pip                # py pkgs
+    python3Packages.pandas             # pandas
+    python3Packages.openpyxl           # py excel library
+    python3Packages.pillow             # PIL fork
     tree-sitter                        # syntax parser
     stylua                             # lua formatter for nvim
     lua-language-server                # lua lsp

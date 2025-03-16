@@ -17,8 +17,6 @@
     pa-notify                          # vol notify
     easyeffects                        # audio effects
     pamixer                            # pulseaudio cli mixer
-    pipewire                           # audio/video server
     pwvucontrol                        # Pipewire volume control
-    wireplumber                        # pipewire session manager
   ];
 }

@@ -109,9 +109,6 @@
   environment.systemPackages = with pkgs; [
     bluez
     bluez-tools
-    blueman
-
-    networkmanager
     networkmanagerapplet
   ];
 }

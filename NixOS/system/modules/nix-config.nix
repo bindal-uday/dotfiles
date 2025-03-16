@@ -1,6 +1,13 @@
-{ config, lib, ... }:
+{ config, lib, inputs, systemConfig, ... }:
 
+let
+  system = systemConfig.system;
+  programs-db = inputs.programs-db.packages.${system}.programs-sqlite;
+in
 {
+
+  # programs db
+  programs.command-not-found.dbPath = programs-db;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

@@ -28,7 +28,6 @@
 
   # systemPackages
   environment.systemPackages = with pkgs; [
-    greetd.greetd                      # login manager daemon
     greetd.tuigreet                    # greeter for greetd 
   ];
 }

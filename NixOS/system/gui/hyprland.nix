@@ -4,7 +4,6 @@ let
     hyprlandPkg = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPkg = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 in
-
 {
 
   # Enable hyprland and related stuff
@@ -25,16 +24,6 @@ in
     # polkit.package = pkgs.polkit_gnome;
   };
 
-  # cross desktop grouping (sandbox apps)
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
-    ];
-  };
-
   # environment vars
   environment.sessionVariables = {
     # Hint Electon apps to use wayland
@@ -44,10 +33,9 @@ in
   };
 
   # QT theme
-  environment.variables.QT_QPA_PLATFORMTHEME = lib.mkForce "gnome";
+  environment.variables.QT_QPA_PLATFORMTHEME = lib.mkForce "qt6ct";
   
   # Some system packages
-  
   environment.systemPackages = (with pkgs; [
 
     # Window Manager --------------------------------------------------- #
@@ -57,10 +45,8 @@ in
     dunst                              # notification daemon
     grim                               # grab image tool
     grimblast                          # screenshot tool
-    gvfs                               # virtual fs 
     hyprcursor                         # cursor
     hypridle                           # idle utility
-    hyprland                           # wlroots-based wayland compositor
     hyprlock                           # lock utility
     hyprpaper                          # wallpaper daemon
     hyprpicker                         # color picker
@@ -75,7 +61,6 @@ in
     wl-clip-persist                    # clipboard-persist
     wl-clipboard                       # clipboard 
     wlogout                            # logout menu
-    xwayland                           # interface X11 apps with Wayland protocol
 
     # Dependencies ----------------------------------------------------- #
     gnome-keyring                      # store pass, keys, etc
@@ -86,8 +71,6 @@ in
     parallel                           # for parallel processing
     polkit_gnome                       # authentication agent
     wlr-randr                          # randr for wlroots compositors
-    xdg-desktop-portal-gtk             # xdg desktop portal for gtk
-    xdg-desktop-portal-hyprland        # xdg desktop portal for hyprland
 
     # Theming ---------------------------------------------------------- #
     libadwaita                         # adwaita
