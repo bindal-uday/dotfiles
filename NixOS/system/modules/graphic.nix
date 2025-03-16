@@ -15,12 +15,9 @@
     ];
     # for 32 Bit applications
     extraPackages32 = with pkgs; [
-      rocmPackages.clr
       vaapiVdpau
       libva-vdpau-driver
       libvdpau-va-gl
-      vaapiVdpau
-      mesa
     ];
   };
 

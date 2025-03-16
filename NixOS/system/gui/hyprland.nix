@@ -21,7 +21,6 @@ in
   security = {
     pam.services.login.enableGnomeKeyring = true;
     polkit.enable = true;
-    # polkit.package = pkgs.polkit_gnome;
   };
 
   # environment vars
@@ -64,12 +63,10 @@ in
 
     # Dependencies ----------------------------------------------------- #
     gnome-keyring                      # store pass, keys, etc
-    hyprpolkitagent                    # polkit agent in qt/qml
     imagemagick                        # for image processing
     jq                                 # for json processing
     libnotify                          # for notifications
     parallel                           # for parallel processing
-    polkit_gnome                       # authentication agent
     wlr-randr                          # randr for wlroots compositors
 
     # Theming ---------------------------------------------------------- #
