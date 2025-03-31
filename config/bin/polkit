@@ -1,0 +1,8 @@
+#!/bin/sh
+
+/nix/store/$(ls -la /nix/store | grep 'polkit-gnome' | grep '4096' | awk '{print $9}' | sed -n '$p')/libexec/polkit-gnome-authentication-agent-1 & 
+
+# If polkit_gnome works
+if [ $? -eq 0 ]; then
+    notify-send "Polkit Agent" "Gnome Polkit Agent Started"
+fi
