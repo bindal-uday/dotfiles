@@ -8,6 +8,9 @@
     # Alacritty config
     ".config/alacritty".source = ../../config/alacritty;
 
+    # foot config
+    ".config/foot".source = ../../config/foot;
+
     # Avizo config
     ".config/avizo".source = ../../config/avizo;
 
