@@ -13,17 +13,22 @@ config.window_decorations = "NONE"
 config.window_background_opacity = 0.95
 config.macos_window_background_blur = 10
 
--- colorscheme function
-local function scheme_for_appearance(appearance)
-  if appearance:find("Dark") then
-    return "Catppuccin Mocha"
-  else
-    return "Catppuccin Latte"
-  end
-end
+-- colorscheme
+local catppuccin = require("themes/catppuccin").setup {
+	-- whether or not to sync with the system's theme
+	sync = true,
+	-- the flavours to switch between when syncing
+	-- available flavours: "latte" | "frappe" | "macchiato" | "mocha"
+	sync_flavours = {
+		light = "latte",
+		dark = "mocha"
+	},
+	-- the default/fallback flavour, when syncing is disabled
+	flavour = "mocha"
+}
 
 -- Set the color scheme based on current appearance
-config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
+config.colors = catppuccin
 
 -- Return the configuration to wezterm
 return config

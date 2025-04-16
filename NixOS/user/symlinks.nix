@@ -18,7 +18,7 @@
 
     # Dunst notification daemon
     ".config/dunst".source = ../../config/dunst;
-    
+
     # fastfetch config
     ".config/fastfetch".source = ../../config/fastfetch;
 
