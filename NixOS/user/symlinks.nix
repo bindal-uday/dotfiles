@@ -11,6 +11,9 @@
     # foot config
     ".config/foot".source = ../../config/foot;
 
+    # foot config
+    ".config/wezterm".source = ../../config/wezterm;
+
     # Avizo config
     ".config/avizo".source = ../../config/avizo;
 
