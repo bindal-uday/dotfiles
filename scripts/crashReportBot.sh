@@ -2,8 +2,8 @@
 set -euo pipefail
 
 # Default values
-SECRETS_PATH="~/dotfiles/.private/secrets.json"
-SECRETS_ENV_VAR="~/dotfiles/.private/secrets.env"
+SECRETS_PATH="/home/error/dotfiles/.private/secrets.json"
+SECRETS_ENV_VAR="/home/error/dotfiles/.private/secrets.env"
 CRASH_DIR_BASE="/var/log/crash-logs"
 
 # --- Parse command line flags ---
