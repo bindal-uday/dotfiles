@@ -24,6 +24,10 @@ let
     fetch = "fastfetch";
     neofetch = "fastfetch";
 
+    # Logging
+    journal-last-crash = "sudo lnav /var/log/crash-logs/journal-last-crash.log";
+    dmesg-current = "sudo lnav /var/log/crash-logs/dmesg-current.log";
+
     # nix related
     flake-update = "nix flake update";
     nix-switch = "sudo nixos-rebuild switch --flake ${userConfig.dotfilesDir}";

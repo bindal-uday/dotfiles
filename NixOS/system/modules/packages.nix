@@ -74,6 +74,13 @@ in
     thermald                           # thermal daemon
     tlp                                # advanced power management
 
+    # Logging
+    lm_sensors
+    radeontop
+    stress-ng
+    lnav
+    jq
+
     # Applications ----------------------------------------------------- #
     home-manager                       # /home dir config manager
     onlyoffice-bin                     # office

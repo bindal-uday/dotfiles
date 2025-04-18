@@ -36,9 +36,19 @@
   # Linux Kernel
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   boot.initrd.kernelModules = [ "amdgpu" ];
+  # sysrq magic key
+  boot.kernel.sysctl = {
+    "kernel.sysrq" = 1; #  R E I S U B
+  };
   boot.kernelParams = [
     "psmouse.synaptics_intertouch=0"
     "video4linux"
+    "kernel.sysrq=1" # Enable magic sysrq kernel key
+
+    # amd stuff
+    "amdgpu.dc=0" # Disable Display Core (sometimes causes freezes) 
+    "amdgpu.aspm=0" # Disable PCIe power savings 
+    "amdgpu.dpm=0" # Disable Dynamic Power Management 
   ];
 
   # Bootloader.
