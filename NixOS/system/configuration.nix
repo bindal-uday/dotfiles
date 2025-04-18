@@ -16,6 +16,7 @@
     ./modules/services.nix
     ./modules/nix-config.nix
     ./modules/virtual.nix
+    ./modules/swap.nix
 
     # GUI nix modules
     ./gui/fonts.nix
@@ -35,7 +36,7 @@
 
   # Linux Kernel
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.availableKernelModules = [ "amdgpu" ];
   boot.kernelParams = [
     "psmouse.synaptics_intertouch=0"
     "video4linux"
@@ -78,13 +79,6 @@
   #   default = "http://user:password@proxy:port/";
   #   noProxy = "127.0.0.1,localhost,internal.domain";
   # };
-
-  # zram
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
-    memoryPercent = 100;
-  };
 
   # time zone.
   time.timeZone = systemConfig.timezone;
