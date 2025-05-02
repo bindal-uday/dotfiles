@@ -35,8 +35,6 @@ in
   environment.systemPackages = (with pkgs; [
 
     # Window Manager --------------------------------------------------- #
-    hyprland                           # wlroots-based wayland compositor
-    xwayland                           # interface X11 apps with Wayland protocol
     nemo-with-extensions               # file manager
     dunst                              # notification daemon
     rofi-wayland                       # application launcher
@@ -64,23 +62,10 @@ in
     hyprpolkitagent                    # polkit agent in qt/qml
     polkit_gnome                       # authentication agent
     gnome-keyring                      # store pass, keys, etc
-    xdg-desktop-portal-hyprland        # xdg desktop portal for hyprland
-    xdg-desktop-portal-gtk             # xdg desktop portal for gtk
     parallel                           # for parallel processing
     jq                                 # for json processing
     imagemagick                        # for image processing
     libnotify                          # for notifications
-    notify-desktop                     # for sending desktop notifications
-
-    # Theming ---------------------------------------------------------- #
-    nwg-look                           # gtk configuration tool
-    libsForQt5.qt5ct                   # qt5 configuration tool
-    kdePackages.qt6ct                  # qt6 configuration tool
-    libsForQt5.qtstyleplugin-kvantum   # svg based qt5 theme engine
-    kdePackages.qtstyleplugin-kvantum  # svg based qt6 theme engine
-    libsForQt5.qt5.qtwayland           # wayland support in qt5
-    kdePackages.qtwayland              # wayland support in qt6
-    adw-gtk3                           # adwaita gtk3 theme
 
   ]) ++ (with pkgs-stable; [
 

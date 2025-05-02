@@ -10,6 +10,7 @@ let
     "rofi"
     "waybar"
     "wlogout"
+    "qt5ct"
   ];
 
   cfgDir = ./../../../config;

@@ -10,6 +10,7 @@
 
 let
   system = systemConfig.system;
+  py = pkgs.python3Packages;
   zen-browser = inputs.zen-browser.packages."${system}".default;
 in
 {
@@ -27,30 +28,17 @@ in
     # CLI Tools / Dependencies ----------------------------------------- #
     vim
     tree
-    wget
-    axel
-    htop
-    btop
-    usbtop
-    neofetch
-    nix-index
-    nix-prefetch-git
+    wget axel
+    htop btop usbtop
+    nix-index nix-prefetch-git
     cachix
-    zip
-    unzip
-    unrar
+    zip unzip unrar
     fzf
     android-tools
 
     # Shell ------------------------------------------------------------ #
-    git                                # version control
-    gh                                 # github cli
-    glab                               # gitlab cli
-    zsh                                # the z shell
-    eza                                # file lister for zsh
-    oh-my-zsh                          # plugin manager for zsh
-    zsh-powerlevel10k                  # theme for zsh
-    lsd                                # file lister for fish
+    git gh glab                        # version control
+    eza lsd                            # file lister
     starship                           # customizable shell prompt
     fastfetch                          # system information fetch tool
     imagemagick                        # for custom fetch logo
@@ -63,8 +51,6 @@ in
 
     # System stuff ----------------------------------------------------- #
     brightnessctl                      # screen brightness control
-    udisks                             # disk utility
-    udiskie                            # manage removable media
     gparted                            # partition manager
     usbutils                           # tools for usb
     pciutils                           # tools for pci
@@ -75,12 +61,9 @@ in
     tlp                                # advanced power management
 
     # Applications ----------------------------------------------------- #
-    home-manager                       # /home dir config manager
     onlyoffice-bin                     # office
-    obs-studio                         # screen rec
-    alacritty                          # terminal
-    wezterm                            # term2
-    foot                               # term3
+    wl-screenrec                       # screen rec
+    alacritty foot                     # terminal
     ranger                             # TUI file manager
     mpv                                # media player
     imv                                # image viewer
@@ -101,20 +84,12 @@ in
     nodePackages.nodejs                # framework for JS engine
     nodePackages.npm                   # npm
     python3                            # python3
-    python3Packages.pip                # py pkgs
-    python3Packages.pandas             # pandas
-    python3Packages.pillow             # PIL fork
-    python3Packages.openpyxl           # py excel library
-    stylua                             # lua formatter for nvim
-    lua-language-server                # lua lsp
-    gcc                                # GNU compiler collection
-    gnumake                            # make system
-
-  ]) ++ (with pkgs.vscode-extensions; [
-    # vscodium extensions
-    catppuccin.catppuccin-vsc
-    catppuccin.catppuccin-vsc-icons
-    wmaurer.change-case
+    (py.pip)                           # py pkgs
+    (py.pandas)                        # pandas
+    (py.pillow)                        # PIL fork
+    (py.openpyxl)                      # excel lib
+    stylua lua-language-server         # lua formatter & lsp
+    gcc gnumake                        # GNU compiler & make                            # make system
 
   ]) ++ (with pkgs-stable; [
 
