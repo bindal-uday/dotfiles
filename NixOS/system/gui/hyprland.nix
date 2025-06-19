@@ -35,11 +35,9 @@ in
   environment.systemPackages = (with pkgs; [
 
     # Window Manager --------------------------------------------------- #
-    hyprland                           # wlroots-based wayland compositor
-    xwayland                           # interface X11 apps with Wayland protocol
     nemo-with-extensions               # file manager
     dunst                              # notification daemon
-    rofi-wayland                       # application launcher
+    wofi                               # application launcher
     waybar                             # system bar
     swww                               # wallpaper
     swaylock-effects                   # lock screen
@@ -64,8 +62,6 @@ in
     hyprpolkitagent                    # polkit agent in qt/qml
     polkit_gnome                       # authentication agent
     gnome-keyring                      # store pass, keys, etc
-    xdg-desktop-portal-hyprland        # xdg desktop portal for hyprland
-    xdg-desktop-portal-gtk             # xdg desktop portal for gtk
     parallel                           # for parallel processing
     jq                                 # for json processing
     imagemagick                        # for image processing
