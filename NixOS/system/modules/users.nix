@@ -31,7 +31,9 @@ in
   users.defaultUserShell = pkgs.${shellName};
 
   # Change runtime directory size
-  services.logind.extraConfig = "RuntimeDirectorySize=8G";
+  services.logind.settings.Login = {
+    RuntimeDirectorySize="8G";
+  };
 
   # user pkgs
   programs = {

@@ -82,8 +82,10 @@ in
     firefox                            # browser
     zen-browser                        # firefox fork
     librewolf                          # browser2
+    qutebrowser                        # vim-browser
+    brave                              # chromium browser
     motrix qbittorrent                 # download manager
-    stremio                            # binge
+    # stremio                          # binge
     ani-cli                            # anime cli
     vscodium                           # ide text editor
     neovim                             # terminal text editor
@@ -115,7 +117,6 @@ in
   ]) ++ (with pkgs-stable; [
 
     # pkgs from stable branch
-    qutebrowser                        # vim-browser
 
   ]);
 
